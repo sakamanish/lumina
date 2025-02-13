@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import luminLogo from './lumin.png';
 
 function LoginPage({ onLogin }: { onLogin: () => void }) {
   const [credentials, setCredentials] = useState({
@@ -10,7 +10,7 @@ function LoginPage({ onLogin }: { onLogin: () => void }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (credentials.username === 'ganesh' && credentials.password === 'bittu') {
+    if (credentials.username === 'manish' && credentials.password === 'alliswell') {
       setError('');
       onLogin();
     } else {
@@ -355,16 +355,19 @@ interface InvoiceItem {
         <div className="p-8 bg-white border-2 border-gray-800">
           {/* Fixed Letterhead */}
           <div className="border-b-2 border-gray-800">
+          <div className="text-center flex-grow">
+              <img src={luminLogo} alt="Lumina Enterprises Logo" style={{ width: '810px', height: '150px', objectFit: 'contain' }} />
+           </div>
+
+
+
+    <div className="w-24"></div> {/* Spacing for alignment */}
+            
             <div className="flex items-start justify-between mb-4">
-              <div className="text-sm">
-                <div>GST No. 36AALFL3875F1Z0</div>
-                <div>Mohan</div>
-                <div>Call: 7981945670</div>
-                <div>www.luminaenterprise.in</div>
-              </div>
+              
               <div className="text-5xl font-bold text-blue-800 text-center flex-grow">
-                Lumina
-                <div className="text-4xl">Enterprises</div>
+                
+                <div className="text-4xl"></div>
               </div>
               <div className="w-24"></div> {/* Spacing for alignment */}
             </div>
