@@ -23,7 +23,7 @@
   
   @page {
     size: A4;
-    margin: 10mm;
+    margin: 0mm;
   }
   
   .max-w-\[210mm\] {
@@ -34,5 +34,20 @@
 
   .border-gray-800 {
     border-color: black !important;
+  }
+}
+
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .print:hidden {
+    display: none;
   }
 }
