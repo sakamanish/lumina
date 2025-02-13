@@ -1,5 +1,88 @@
 import React, { useState } from 'react';
 
+
+function LoginPage({ onLogin }: { onLogin: () => void }) {
+  const [credentials, setCredentials] = useState({
+    username: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (credentials.username === 'manish' && credentials.password === 'alliswell') {
+      setError('');
+      onLogin();
+    } else {
+      setError('Invalid username or password');
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
+        <div>
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
+            Lumina Enterprises
+          </h2>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            Invoice Management System
+          </p>
+        </div>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="username" className="sr-only">Username</label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                placeholder="Username"
+                value={credentials.username}
+                onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+                value={credentials.password}
+                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+              />
+            </div>
+          </div>
+          {error && (
+            <div className="text-red-500 text-sm text-center">{error}</div>
+          )}
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Sign in
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+
+
+//login form 
+
+
+
+
+
 interface InvoiceItem {
   id: number;
   description: string;
@@ -9,7 +92,12 @@ interface InvoiceItem {
   amount: number;
 }
 
-function App() {
+//function InvoiceApp() {
+
+  function InvoiceApp({ setIsAuthenticated }: { setIsAuthenticated: (value: boolean) => void }) {
+    // All your existing code stays the same until the return statement
+
+    
   const [customerDetails, setCustomerDetails] = useState({
     name: '',
     address: '',
@@ -124,8 +212,23 @@ function App() {
     return result.trim() + ' Only';
   };
 
-  return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    
+    return (
+      <div className="min-h-screen bg-gray-100 p-8">
+        <div className="max-w-[210mm] mx-auto bg-white">
+          {/* Add logout button */}
+          {/*
+            <div className="flex justify-end p-4">
+            <button
+              onClick={() => setIsAuthenticated(false)}
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
+              Logout
+            </button> 
+          </div>
+          */}
+          {/* Edit Form */}
+          <div className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-[210mm] mx-auto bg-white">
         {/* Edit Form */}
         <div className="p-4 mb-8 bg-gray-50 rounded shadow-sm print:hidden">
@@ -329,8 +432,11 @@ function App() {
 
           <div className="border-2 border-gray-800 p-2 mb-8">
             <div className="font-bold">Bank Details:</div>
-            <div>ICICI BANK A/C NO. 130405002466</div>
-            <div>IFSC NO.: ICIC0001304</div>
+            <div>ICICI BANK A/C NO. 130405002466                  </div>
+            <div>IFSC NO.: ICIC0001304                </div>
+            <div>GST No:- 36AALFL3875F1Z0</div>
+            <div>PAN NO:- AALFL3875F</div>
+            
           </div>
 
           {/* Footer */}
@@ -346,7 +452,27 @@ function App() {
         </div>
       </div>
     </div>
-  );
-}
+          {/* Rest of your existing code */}
+          {/* ... */}
+        </div>
+      </div>
+    );
+  }
+  
+  function App() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+    return (
+      <>
+        {!isAuthenticated ? (
+          <LoginPage onLogin={() => setIsAuthenticated(true)} />
+        ) : (
+          <InvoiceApp setIsAuthenticated={setIsAuthenticated} />
+        )}
+      </>
+    );
+  }
 
-export default App;
+  export default App;
+  
+//export default App;
