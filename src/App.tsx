@@ -10,7 +10,7 @@ function LoginPage({ onLogin }: { onLogin: () => void }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (credentials.username === 'manish' && credentials.password === 'alliswell') {
+    if (credentials.username === 'ganesh' && credentials.password === 'bittu') {
       setError('');
       onLogin();
     } else {
