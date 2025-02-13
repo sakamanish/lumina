@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    background: white;
+  }
+  
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  .bg-gray-100 {
+    background-color: white !important;
+  }
+  
+  input, textarea {
+    border: none !important;
+  }
+  
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+  
+  .max-w-\[210mm\] {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .border-gray-800 {
+    border-color: black !important;
+  }
+}
