@@ -10,7 +10,7 @@ function LoginPage({ onLogin }: { onLogin: () => void }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (credentials.username === 'ganesh' && credentials.password === 'bittu') {
+    if ((credentials.username === 'ganesh' && credentials.password === 'bittu') || (credentials.username === 'mohan' && credentials.password === 'alliswell')) {
       setError('');
       onLogin();
     } else {
@@ -231,9 +231,9 @@ interface InvoiceItem {
           <div className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-[210mm] mx-auto bg-white">
         {/* Edit Form */}
-        <div className="p-4 mb-8 bg-gray-50 rounded shadow-sm print:hidden">
-          <h2 className="text-lg font-semibold mb-4">Invoice Details</h2>
-          <div className="grid grid-cols-2 gap-4">
+        <div className="p-4 mb-0 bg-gray-50 rounded shadow-sm print:hidden">
+          <h2 className="text-lg font-semibold mb-2">Invoice Details</h2>
+          <div className="grid grid-cols-2 gap-1">
             <div>
               <h3 className="font-medium mb-2">Customer Details</h3>
               <input
@@ -345,25 +345,25 @@ interface InvoiceItem {
 
           <button
             onClick={() => window.print()}
-            className="mt-4 bg-green-500 text-white px-8 py-2 rounded"
+            className="mt-2 bg-green-500 text-white px-8 py-2 rounded"
           >
             Generate Invoice
           </button>
         </div>
 
         {/* Invoice Template - Exactly matching the sample */}
-        <div className="p-8 bg-white border-2 border-gray-800">
+        <div className="p-1 bg-white border-2 border-gray-800" style={{ width: '190mm', minHeight: '265mm', margin: '0 auto' }}>
           {/* Fixed Letterhead */}
           <div className="border-b-2 border-gray-800">
           <div className="text-center flex-grow">
-              <img src={luminLogo} alt="Lumina Enterprises Logo" style={{ width: '810px', height: '150px', objectFit: 'contain' }} />
+              <img src={luminLogo} alt="Lumina Enterprises Logo" style={{ width: '1000px', height: '160px', objectFit: 'contain' }} />
            </div>
 
 
 
     <div className="w-24"></div> {/* Spacing for alignment */}
             
-            <div className="flex items-start justify-between mb-4">
+            <div className="flex items-start justify-between mb-0">
               
               <div className="text-5xl font-bold text-blue-800 text-center flex-grow">
                 
@@ -371,14 +371,14 @@ interface InvoiceItem {
               </div>
               <div className="w-24"></div> {/* Spacing for alignment */}
             </div>
-            <div className="text-center text-sm mb-4">
+            <div className="text-center text-sm mb-1">
               Shop No.2, Father's Model School Plot No-165, Venkateshwara Nagar, Qutbullapur, Medchal 500055
               <div>Phone No. 8121272685 Email ID: mohan@luminaenterprises.in</div>
             </div>
           </div>
 
           {/* Customer Details and Invoice Info */}
-          <div className="grid grid-cols-2 gap-4 mt-4 mb-6 border-2 border-gray-800">
+          <div className="grid grid-cols-2 gap-4 mt-2 mb-2 border-2 border-gray-800">
             <div className="p-2">
               <div className="font-bold">TO</div>
               <div>{customerDetails.name}</div>
@@ -394,12 +394,12 @@ interface InvoiceItem {
           </div>
 
           {/* Items Table - Exact match to sample */}
-          <table className="w-full mb-6 border-2 border-gray-800">
+          <table className="w-full mb-1 border-2 border-gray-800">
             <thead>
               <tr className="border-b-2 border-gray-800">
-                <th className="border-r-2 border-gray-800 p-2 text-left">SL.NO</th>
-                <th className="border-r-2 border-gray-800 p-2 text-left">PRODUCT DESCRIPTION</th>
-                <th className="border-r-2 border-gray-800 p-2 text-center">HSN</th>
+                <th className="border-r-2 border-gray-800 p-1 text-left">SL.NO</th>
+                <th className="border-r-2 border-gray-800 p-1 text-left">PRODUCT DESCRIPTION</th>
+                <th className="border-r-2 border-gray-800 p-1 text-center">HSN</th>
                 <th className="border-r-2 border-gray-800 p-2 text-right">Qty</th>
                 <th className="border-r-2 border-gray-800 p-2 text-right">Rate/Unit</th>
                 <th className="p-2 text-right">Amount</th>
@@ -412,7 +412,7 @@ interface InvoiceItem {
                   <td className="border-r-2 border-gray-800 p-2">{item.description}</td>
                   <td className="border-r-2 border-gray-800 p-2 text-center">{item.hsn}</td>
                   <td className="border-r-2 border-gray-800 p-2 text-right">{item.qty}</td>
-                  <td className="border-r-2 border-gray-800 p-2 text-right">Rs {Number(item.rate).toFixed(2)}</td>
+                  <td className="border-r-2 border-gray-800 p-2 text-right"> {Number(item.rate).toFixed(2)}</td>
                   <td className="p-2 text-right">Rs {item.amount.toFixed(2)}</td>
                 </tr>
               ))}
@@ -428,12 +428,12 @@ interface InvoiceItem {
           </table>
 
           {/* Amount in Words and Bank Details */}
-          <div className="border-2 border-gray-800 p-2 mb-4">
+          <div className="border-2 border-gray-800 p-2 mb-1">
             <div className="font-bold">Total Amount in Words:</div>
             <div>{numberToWords(calculateGrandTotal())}</div>
           </div>
 
-          <div className="border-2 border-gray-800 p-2 mb-8">
+          <div className="border-2 border-gray-800 p-2 mb-2">
             <div className="font-bold">Bank Details:</div>
             <div>ICICI BANK A/C NO. 130405002466                  </div>
             <div>IFSC NO.: ICIC0001304                </div>
